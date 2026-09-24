@@ -95,7 +95,7 @@ export function useContactForm() {
     isSubmitting.value = true;
 
     try {
-      const apiBase = (import.meta.env.VITE_API_BASE_URL).replace(/\/+$/, '');
+      const apiBase = (import.meta.env.VITE_API_BASE_URL || "").replace(/\/+$/, '');
       const response = await fetch(`${apiBase}/api/contact.php`, {
         method: 'POST',
         headers: {
