@@ -95,7 +95,8 @@ export function useContactForm() {
     isSubmitting.value = true;
 
     try {
-      const response = await fetch('/api/contact.php', {
+      const apiBase = (import.meta.env.VITE_API_BASE_URL || '').replace(/\/+$/, '');
+      const response = await fetch(`${apiBase}/api/contact.php`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

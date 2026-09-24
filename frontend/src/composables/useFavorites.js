@@ -2,7 +2,6 @@ import { ref, watch } from 'vue';
 
 const STORAGE_KEY = 'movie_library_favorites';
 
-// Global state shared across components
 const loadStoredFavorites = () => {
   try {
     const raw = localStorage.getItem(STORAGE_KEY);

@@ -32,6 +32,7 @@
   display: inline-flex;
   align-items: center;
   gap: 10px;
+  direction: ltr;
   background-color: var(--accent-gold);
   color: #000000;
   font-family: var(--font-heading);

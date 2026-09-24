@@ -36,7 +36,7 @@
       </div>
     </div>
 
-    <!-- Scroller Track Container -->
+    
     <div
       class="scroller-outer"
       @mouseenter="handleMouseEnter"
@@ -44,11 +44,11 @@
       @touchstart="handleTouchStart"
       @touchend="handleTouchEnd"
     >
-      <!-- Gradient masks on sides for sleek fade effect -->
+      
       <div class="edge-mask mask-left"></div>
       <div class="edge-mask mask-right"></div>
 
-      <!-- Loading skeleton -->
+      
       <div v-if="isLoading && recommendations.length === 0" class="skeleton-row">
         <div v-for="n in 6" :key="n" class="skeleton-card">
           <div class="skeleton-poster"></div>
@@ -58,13 +58,13 @@
         </div>
       </div>
 
-      <!-- Error State -->
+      
       <div v-else-if="fetchError && recommendations.length === 0" class="error-container site-container">
         <p>{{ fetchError }}</p>
         <button class="btn-primary" @click="fetchRandomRecommendations">Try Again</button>
       </div>
 
-      <!-- Scrolling Single Row -->
+      
       <div
         v-else
         class="scroller-track"

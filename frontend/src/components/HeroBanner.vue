@@ -32,7 +32,7 @@ onMounted(() => {
   if (videoRef.value) {
     videoRef.value.muted = true;
     videoRef.value.play().catch(() => {
-      // Auto-play was prevented by browser policy
+      
     });
   }
 });

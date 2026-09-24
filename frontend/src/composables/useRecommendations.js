@@ -10,7 +10,7 @@ export function useRecommendations() {
   const isHovered = ref(false);
   const isInteracting = ref(false);
 
-  // Return original + duplicate for continuous wrapping
+  
   const displayShows = computed(() => {
     if (recommendations.value.length === 0) return [];
     return [...recommendations.value, ...recommendations.value];

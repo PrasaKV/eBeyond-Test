@@ -1,6 +1,6 @@
 <template>
   <div class="movie-library-page">
-    <!-- Top breadcrumb / navigation bar -->
+    
     <div class="library-top-bar">
       <div class="site-container top-bar-flex">
         <router-link to="/" class="btn-back">
@@ -19,7 +19,7 @@
       </div>
     </div>
 
-    <!-- Library Header & Search Section -->
+    
     <section class="library-header-section">
       <div class="site-container">
         <div class="header-content">
@@ -29,7 +29,7 @@
           </p>
         </div>
 
-        <!-- Search Bar with Instant Querying -->
+        
         <div class="library-search-wrapper">
           <div class="search-input-box">
             <svg class="search-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -56,10 +56,9 @@
           </div>
         </div>
 
-
-        <!-- Filter Controls Toolbar -->
+        
         <div class="filters-toolbar">
-          <!-- Genre -->
+          
           <div class="filter-group">
             <label for="genreFilter" class="filter-label">Genre</label>
             <div class="select-wrap">
@@ -72,7 +71,7 @@
             </div>
           </div>
 
-          <!-- Type -->
+          
           <div class="filter-group">
             <label for="typeFilter" class="filter-label">Show Type</label>
             <div class="select-wrap">
@@ -87,7 +86,7 @@
             </div>
           </div>
 
-          <!-- Release Era -->
+          
           <div class="filter-group">
             <label for="eraFilter" class="filter-label">Release Era</label>
             <div class="select-wrap">
@@ -101,7 +100,7 @@
             </div>
           </div>
 
-          <!-- Status -->
+          
           <div class="filter-group">
             <label for="statusFilter" class="filter-label">Status</label>
             <div class="select-wrap">
@@ -113,7 +112,7 @@
             </div>
           </div>
 
-          <!-- Rating -->
+          
           <div class="filter-group">
             <label for="ratingFilter" class="filter-label">Min Rating</label>
             <div class="select-wrap">
@@ -126,7 +125,7 @@
             </div>
           </div>
 
-          <!-- Sort By -->
+          
           <div class="filter-group sort-group">
             <label for="sortBy" class="filter-label">Sort By</label>
             <div class="select-wrap">
@@ -141,7 +140,7 @@
           </div>
         </div>
 
-        <!-- Active Filter Tags & Reset Bar -->
+        
         <div class="active-filters-bar" v-if="hasActiveFilters">
           <span class="active-label">Active Filters:</span>
           <div class="tags-container">
@@ -181,10 +180,10 @@
       </div>
     </section>
 
-    <!-- Main Results Section -->
+    
     <section class="library-results-section" id="library-results">
       <div class="site-container">
-        <!-- Results Header Bar & View Switcher -->
+        
         <div class="results-header-wrap">
           <div class="results-info-group">
             <h2 class="results-heading">
@@ -231,7 +230,7 @@
           </div>
         </div>
 
-        <!-- Loading Skeleton Grid (12 items) -->
+        
         <div v-if="isLoading && shows.length === 0" class="cards-grid">
           <div v-for="n in 12" :key="n" class="skeleton-card">
             <div class="skeleton-poster"></div>
@@ -242,13 +241,13 @@
           </div>
         </div>
 
-        <!-- Error State -->
+        
         <div v-else-if="fetchError && shows.length === 0" class="empty-state">
           <p class="error-msg">{{ fetchError }}</p>
           <button class="btn-primary" @click="fetchInitialShows">Try Again</button>
         </div>
 
-        <!-- Empty Filter Results -->
+        
         <div v-else-if="filteredShows.length === 0" class="empty-state">
           <div class="empty-icon">
             <svg viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="currentColor" stroke-width="1.5">
@@ -264,7 +263,7 @@
           <button class="btn-primary" @click="resetAllFilters">Reset All Filters</button>
         </div>
 
-        <!-- Shows Grid View (Limited to 12 cards) -->
+        
         <div v-else-if="viewMode === 'grid'" class="cards-grid">
           <article
             v-for="show in displayedShows"
@@ -310,7 +309,7 @@
               </p>
 
               <div class="card-actions">
-                <!-- Dedicated page navigation: NO popup -->
+                
                 <router-link
                   :to="`/show/${show.id}`"
                   class="btn-see-more"
@@ -366,7 +365,7 @@
           </article>
         </div>
 
-        <!-- Shows Compact List View (Limited to 12 rows) -->
+        
         <div v-else class="compact-list">
           <article
             v-for="show in displayedShows"
@@ -431,7 +430,7 @@
           </article>
         </div>
 
-        <!-- Pagination Controls (Strict 12 Cards limit per page) -->
+        
         <div v-if="totalPages > 1" class="pagination-wrapper">
           <button
             type="button"
@@ -474,7 +473,7 @@
           </button>
         </div>
 
-        <!-- TVmaze catalogue page loader if reached end of local pool -->
+        
         <div v-if="!searchQuery && !isLoading && currentPage === totalPages && !showFavoritesOnly" class="load-more-wrap">
           <button
             type="button"

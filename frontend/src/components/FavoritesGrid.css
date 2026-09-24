@@ -44,6 +44,7 @@
 .search-input-group {
   display: flex;
   align-items: center;
+  gap: 10px;
   background-color: rgba(0, 0, 0, 0.45);
   border: 1px solid rgba(255, 255, 255, 0.35);
   border-radius: 4px;
@@ -59,7 +60,7 @@
   width: 16px;
   height: 16px;
   color: #cccccc;
-  margin-right: 8px;
+  margin: 0;
   flex-shrink: 0;
 }
 
@@ -70,6 +71,11 @@
   font-size: 0.8125rem;
   color: #ffffff;
   width: 100%;
+  padding: 0 8px;
+}
+
+[dir="rtl"] .search-input {
+  padding-inline: 10px;
 }
 
 .search-input::placeholder {

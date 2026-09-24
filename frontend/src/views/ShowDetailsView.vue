@@ -1,6 +1,6 @@
 <template>
   <div class="show-details-page">
-    <!-- Loading Skeleton State -->
+    
     <div v-if="isLoading" class="site-container details-loading">
       <div class="skeleton-hero">
         <div class="skeleton-poster"></div>
@@ -14,7 +14,7 @@
       </div>
     </div>
 
-    <!-- Error State -->
+    
     <div v-else-if="errorMessage" class="site-container details-error">
       <svg viewBox="0 0 24 24" width="56" height="56" stroke="#ff5e57" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
         <circle cx="12" cy="12" r="10"></circle>
@@ -29,9 +29,9 @@
       </div>
     </div>
 
-    <!-- Show Content Page -->
+    
     <div v-else-if="show" class="details-content">
-      <!-- Full cinematic hero banner -->
+      
       <section class="details-hero">
         <div
           class="hero-ambient-bg"
@@ -41,7 +41,7 @@
 
         <div class="site-container hero-container">
           <div class="hero-layout">
-            <!-- Left Poster Column -->
+            
             <div class="hero-poster-col">
               <div class="poster-card">
                 <img
@@ -59,7 +59,7 @@
               </div>
             </div>
 
-            <!-- Right Info Column -->
+            
             <div class="hero-info-col">
               <div class="hero-status-badges">
                 <span
@@ -96,7 +96,7 @@
                 </span>
               </div>
 
-              <!-- Action buttons -->
+              
               <div class="hero-cta-group">
                 <button
                   type="button"
@@ -126,19 +126,19 @@
         </div>
       </section>
 
-      <!-- Main Body: Storyline, Specs, Cast, Seasons -->
+      
       <section class="details-body-section">
         <div class="site-container">
           <div class="main-body-grid">
-            <!-- Left Main Column: Storyline, Cast, Seasons -->
+            
             <div class="body-main-col">
-              <!-- Storyline / Synopsis -->
+              
               <div class="content-block">
                 <h2 class="block-title">Storyline</h2>
                 <div class="storyline-text" v-html="cleanedSummary"></div>
               </div>
 
-              <!-- Cast & Characters -->
+              
               <div class="content-block">
                 <div class="block-head-wrap">
                   <h2 class="block-title">Cast &amp; Characters</h2>
@@ -173,7 +173,7 @@
                 </div>
               </div>
 
-              <!-- Seasons Guide -->
+              
               <div class="content-block">
                 <div class="block-head-wrap">
                   <h2 class="block-title">Seasons &amp; Episodes Guide</h2>
@@ -220,7 +220,7 @@
               </div>
             </div>
 
-            <!-- Right Sidebar: Technical & Broadcast Specifications -->
+            
             <div class="body-side-col">
               <div class="specs-card">
                 <h3 class="specs-card-title">Show Information</h3>
@@ -268,7 +268,7 @@
                 </dl>
               </div>
 
-              <!-- Quick action box in sidebar -->
+              
               <div class="side-cta-card">
                 <h4>Build your personal watchlist</h4>
                 <p>Add <strong>{{ show.name }}</strong> to your favourites grid to access it anytime.</p>
@@ -347,7 +347,6 @@ onMounted(() => {
   fetchShowDetails();
 });
 
-// Computed properties
 const networkName = computed(() => {
   if (!show.value) return '';
   return show.value.network?.name || show.value.webChannel?.name || '';
@@ -392,8 +391,6 @@ const scheduleDetails = computed(() => {
   return `${daysStr} ${timeStr} ${timezone}`.trim();
 });
 
-// stripExternalLinks imported from utils/formatters.js
-
 const cleanedSummary = computed(() => {
   if (!show.value?.summary) return '<p>No detailed summary provided for this title.</p>';
   return stripExternalLinks(show.value.summary);
@@ -419,7 +416,6 @@ const totalEpisodesCount = computed(() => {
   return null;
 });
 
-// formatDate imported from utils/formatters.js
 </script>
 
 <style scoped src="./ShowDetailsView.css"></style>

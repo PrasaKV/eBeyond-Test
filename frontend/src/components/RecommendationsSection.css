@@ -134,6 +134,7 @@
 
 .nav-arrows {
   display: flex;
+  direction: ltr;
   gap: 6px;
 }
 

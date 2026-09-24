@@ -112,10 +112,11 @@
 .search-input-box {
   display: flex;
   align-items: center;
+  gap: 14px;
   background-color: #202020;
   border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 6px;
-  padding: 12px 16px;
+  padding: 12px 18px;
   transition: border-color 0.2s ease, box-shadow 0.2s ease;
   max-width: 720px;
 }
@@ -129,7 +130,7 @@
   width: 20px;
   height: 20px;
   color: #999999;
-  margin-right: 12px;
+  margin: 0;
   flex-shrink: 0;
 }
 
@@ -140,6 +141,15 @@
   font-size: 0.95rem;
   color: #ffffff;
   width: 100%;
+  padding: 0 10px;
+}
+
+[dir="rtl"] .search-input-box {
+  gap: 16px;
+}
+
+[dir="rtl"] .library-search-input {
+  padding-inline: 14px;
 }
 
 .library-search-input::placeholder {
@@ -371,7 +381,6 @@
   color: var(--accent-gold);
 }
 
-/* Grid View (3 rows x 4 columns = 12 cards) */
 .cards-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -558,7 +567,6 @@
   color: #2ecc71;
 }
 
-/* Compact List View */
 .compact-list {
   display: flex;
   flex-direction: column;
@@ -693,9 +701,9 @@
   overflow: hidden;
 }
 
-/* Pagination Controls */
 .pagination-wrapper {
   display: flex;
+  direction: ltr;
   align-items: center;
   justify-content: center;
   gap: 12px;

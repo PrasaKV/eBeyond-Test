@@ -10,7 +10,7 @@
         aria-labelledby="modal-show-title"
       >
         <div class="modal-dialog" @click.stop ref="modalDialogRef">
-          <!-- Close button -->
+          
           <button
             type="button"
             class="modal-close-btn"
@@ -23,13 +23,13 @@
             </svg>
           </button>
 
-          <!-- Loading state -->
+          
           <div v-if="isLoading" class="modal-loading-state">
             <div class="spinner"></div>
             <p>Fetching full show details from TVmaze...</p>
           </div>
 
-          <!-- Error state -->
+          
           <div v-else-if="errorMessage" class="modal-error-state">
             <svg viewBox="0 0 24 24" width="48" height="48" stroke="#ff6b6b" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
               <circle cx="12" cy="12" r="10"></circle>
@@ -41,9 +41,9 @@
             <button class="btn-primary" @click="fetchShowDetails">Retry</button>
           </div>
 
-          <!-- Content display -->
+          
           <div v-else-if="show" class="modal-content-wrap">
-            <!-- Hero banner with backdrop blur -->
+            
             <div class="modal-hero">
               <div
                 class="hero-bg-blur"
@@ -152,7 +152,7 @@
               </div>
             </div>
 
-            <!-- Tab navigation -->
+            
             <div class="modal-tabs-bar">
               <button
                 type="button"
@@ -180,9 +180,9 @@
               </button>
             </div>
 
-            <!-- Tab contents -->
+            
             <div class="modal-body-content">
-              <!-- OVERVIEW TAB -->
+              
               <div v-if="activeTab === 'overview'" class="tab-panel">
                 <div class="overview-grid">
                   <div class="overview-main">
@@ -221,7 +221,7 @@
                     </div>
                   </div>
 
-                  <!-- Quick side card -->
+                  
                   <div class="overview-side">
                     <div class="side-card">
                       <h4 class="side-card-title">Series Summary</h4>
@@ -250,7 +250,7 @@
                 </div>
               </div>
 
-              <!-- CAST TAB -->
+              
               <div v-else-if="activeTab === 'cast'" class="tab-panel">
                 <div v-if="castList.length === 0" class="empty-panel">
                   <p>No cast information available for this title.</p>
@@ -280,7 +280,7 @@
                 </div>
               </div>
 
-              <!-- SEASONS TAB -->
+              
               <div v-else-if="activeTab === 'seasons'" class="tab-panel">
                 <div v-if="seasonsList.length === 0" class="empty-panel">
                   <p>No season details listed for this title.</p>
@@ -414,7 +414,6 @@ onBeforeUnmount(() => {
   window.removeEventListener('keydown', handleKeyDown);
 });
 
-// Computed properties for formatting
 const networkName = computed(() => {
   if (!show.value) return '';
   return show.value.network?.name || show.value.webChannel?.name || '';

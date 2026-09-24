@@ -89,7 +89,7 @@
 
       <div class="favorites-divider"></div>
 
-      <!-- Empty State when no favorites are saved -->
+      
       <div v-if="favorites.length === 0" class="empty-state">
         <div class="empty-icon-wrap">
           <svg viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="currentColor" stroke-width="1.5">
@@ -108,7 +108,7 @@
         </div>
       </div>
 
-      <!-- Favorites Cards Grid -->
+      
       <transition-group v-else name="card-anim" tag="div" class="cards-grid">
         <article
           v-for="card in favorites"
@@ -245,11 +245,10 @@ const removeCard = (cardId) => {
   removeFavorite(cardId);
 };
 
-// Allow user to populate top sample picks if they wish
 const loadSampleFavorites = async () => {
   isLoadingSamples.value = true;
   try {
-    const sampleIds = [169, 82, 178]; // Breaking Bad, Game of Thrones, Flash
+    const sampleIds = [169, 82, 178]; 
     for (const id of sampleIds) {
       try {
         const res = await fetch(`https://api.tvmaze.com/shows/${id}`);

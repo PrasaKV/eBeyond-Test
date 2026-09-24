@@ -38,7 +38,7 @@ export function useMovieLibrary(favoritesRef = null) {
   const apiPage = ref(0);
   const currentPage = ref(1);
 
-  // Filter states
+  
   const searchQuery = ref('');
   const activeCategory = ref('all');
   const showFavoritesOnly = ref(false);

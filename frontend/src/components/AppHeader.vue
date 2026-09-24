@@ -18,18 +18,20 @@
         </ul>
       </nav>
 
-      <button
-        class="hamburger-btn"
-        :class="{ 'is-active': isMenuOpen }"
-        @click="toggleMenu"
-        :aria-expanded="isMenuOpen"
-        aria-controls="mobile-drawer"
-        aria-label="Toggle navigation menu"
-      >
-        <span class="hamburger-bar"></span>
-        <span class="hamburger-bar"></span>
-        <span class="hamburger-bar"></span>
-      </button>
+      <div class="header-actions">
+        <button
+          class="hamburger-btn"
+          :class="{ 'is-active': isMenuOpen }"
+          @click="toggleMenu"
+          :aria-expanded="isMenuOpen"
+          aria-controls="mobile-drawer"
+          aria-label="Toggle navigation menu"
+        >
+          <span class="hamburger-bar"></span>
+          <span class="hamburger-bar"></span>
+          <span class="hamburger-bar"></span>
+        </button>
+      </div>
     </div>
 
     <transition name="drawer-fade">

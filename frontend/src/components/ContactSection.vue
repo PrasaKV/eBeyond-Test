@@ -3,7 +3,7 @@
     <div class="site-container">
       <div class="contact-heading-wrap">
         <h2 class="contact-title">How to reach us</h2>
-        <p class="contact-subtitle">Lorem ipsum dolor sit amet, consetetur.</p>
+        <p class="contact-subtitle">Have questions or need assistance? Reach out to our team today.</p>
       </div>
 
       <div class="contact-grid">

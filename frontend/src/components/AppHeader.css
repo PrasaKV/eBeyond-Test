@@ -116,6 +116,12 @@
   background-color: #ffffff;
 }
 
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
 .hamburger-btn {
   display: none;
   flex-direction: column;
@@ -164,11 +170,12 @@
   max-width: 85vw;
   height: 100%;
   background-color: #121212;
-  border-left: 1px solid rgba(255, 255, 255, 0.1);
+  border-inline-start: 1px solid rgba(255, 255, 255, 0.1);
   padding: 24px;
   display: flex;
   flex-direction: column;
 }
+
 
 .drawer-header {
   display: flex;
