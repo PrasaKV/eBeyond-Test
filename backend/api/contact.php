@@ -92,6 +92,35 @@ $newRecord = [
 $submissions[] = $newRecord;
 @file_put_contents($storageFile, json_encode($submissions, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES));
 
+// Send instant success response to browser without waiting for SMTP delivery
+$responsePayload = json_encode([
+    'success' => true,
+    'message' => 'Thank you! Your message has been submitted successfully.',
+    'submissionId' => $newRecord['id']
+]);
+
+header('Content-Type: application/json; charset=UTF-8');
+header('Content-Length: ' . strlen($responsePayload));
+header('Connection: close');
+http_response_code(200);
+echo $responsePayload;
+
+// Flush buffers to release browser immediately
+if (function_exists('fastcgi_finish_request')) {
+    fastcgi_finish_request();
+} else {
+    if (function_exists('ob_get_level')) {
+        while (ob_get_level() > 0) {
+            @ob_end_flush();
+        }
+    }
+    @flush();
+}
+
+// Detach and continue email dispatch in the background
+@ignore_user_abort(true);
+@set_time_limit(120);
+
 $mailer = new SmtpMailer($config['mail']);
 
 $adminRecipients = $config['admin_emails'];
@@ -262,13 +291,4 @@ $logEntry = "[" . date('Y-m-d H:i:s') . "] Submission ID: " . $newRecord['id'] .
 
 @file_put_contents($emailLogFile, $logEntry, FILE_APPEND);
 
-http_response_code(200);
-echo json_encode([
-    'success' => true,
-    'message' => 'Thank you! Your message has been submitted successfully.',
-    'submissionId' => $newRecord['id'],
-    'mailStatus' => [
-        'adminEmail' => $adminSendResult['success'],
-        'userEmail' => $userSendResult['success']
-    ]
-]);
+exit;

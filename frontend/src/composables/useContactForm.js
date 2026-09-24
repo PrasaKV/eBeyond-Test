@@ -95,21 +95,26 @@ export function useContactForm() {
     isSubmitting.value = true;
 
     try {
-      const apiBase = (import.meta.env.VITE_API_BASE_URL || "").replace(/\/+$/, '');
-      const response = await fetch(`${apiBase}/api/contact.php`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          firstName: form.firstName,
-          lastName: form.lastName,
-          email: form.email,
-          telephone: form.telephone,
-          message: form.message,
-          terms: form.terms
-        })
-      });
+      let rawBase = (import.meta.env.VITE_API_BASE_URL || '').trim().replace(/\/+$/, '');
+      
+      const fullUrl = rawBase ? `${rawBase}/api/contact.php` : '/api/contact.php';
+      const [response] = await Promise.all([
+        fetch(fullUrl, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            firstName: form.firstName,
+            lastName: form.lastName,
+            email: form.email,
+            telephone: form.telephone,
+            message: form.message,
+            terms: form.terms
+          })
+        }),
+        new Promise((resolve) => setTimeout(resolve, 400))
+      ]);
 
       const data = await response.json();
 
