@@ -1,0 +1,61 @@
+# Dependencies
+node_modules/
+**/node_modules/
+.pnpm-store/
+
+# Production builds & distribution
+dist/
+**/dist/
+dist-ssr/
+build/
+*.local
+
+# Environment variables & secrets
+.env
+.env.*
+!.env.example
+*.env
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+backend/data/*.log
+
+# Editor & IDE directories
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+*.sublime-project
+*.sublime-workspace
+
+# Operating System files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+Thumbs.db
+ehthumbs.db
+desktop.ini
+
+# Cache and temporary directories
+.temp/
+.tmp/
+tmp/
+.cache/
+.vite/
+*.tsbuildinfo
+.eslintcache
+
+# Backend runtime / composer
+vendor/
+**/vendor/
